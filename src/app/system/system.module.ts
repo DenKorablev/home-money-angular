@@ -8,6 +8,7 @@ import { HistoryPageComponent } from './history-page/history-page.component';
 import { PlaningPageComponent } from './planing-page/planing-page.component';
 import { RecordsPageComponent } from './records-page/records-page.component';
 import { SystemComponent } from './system.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule ({
     imports: [
@@ -20,7 +21,8 @@ import { SystemComponent } from './system.component';
         HistoryPageComponent, 
         PlaningPageComponent, 
         RecordsPageComponent,
-        SystemComponent
+        SystemComponent,
+        SidebarComponent
     ]
 })
 
