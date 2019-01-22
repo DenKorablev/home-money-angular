@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'wfm-bill-card',
   templateUrl: './bill-card.component.html',
-  styleUrls: ['./bill-card.component.scss']
+  styleUrls: ['./bill-card.component.less']
 })
 export class BillCardComponent implements OnInit {
 

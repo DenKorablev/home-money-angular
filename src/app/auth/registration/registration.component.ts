@@ -1,42 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'wfm-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.less']
 })
 export class RegistrationComponent implements OnInit {
 
   form: FormGroup;
+
   constructor(
     private usersService: UsersService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails.bind(this)),
       'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
       'name': new FormControl(null, [Validators.required]),
-      'agree': new FormControl(null, [Validators.requiredTrue])
-    })
+      'agree': new FormControl(null, [Validators.required, Validators.requiredTrue])
+    });
   }
 
   onSubmit() {
     const {email, password, name} = this.form.value;
     const user = new User(email, password, name);
-    this.usersService.createNewUser(user)
+
+    this.usersService.createrNewUser(user)
     .subscribe(() => {
       this.router.navigate(['/login'], {
         queryParams: {
           nowCanLogin: true
         }
-      });
+      })
     });
   }
 
@@ -50,6 +52,6 @@ export class RegistrationComponent implements OnInit {
           resolve(null);
         }
       })
-    })
+    })     
   }
 }

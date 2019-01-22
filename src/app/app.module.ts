@@ -17,8 +17,8 @@ import { SystemModule } from './system/system.module';
     BrowserModule,
     HttpClientModule,
     AuthModule,
-    SystemModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SystemModule
   ],
   providers: [
     UsersService, 

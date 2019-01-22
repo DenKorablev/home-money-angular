@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'wfm-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.less']
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'home-money';
+}

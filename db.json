@@ -7,28 +7,10 @@
       "name": "Администратор"
     },
     {
-      "id": 2,
-      "email": "test@mail.ru",
-      "password": "123456",
-      "name": "Админ"
-    },
-    {
-      "email": "denis-korablev18@rambler.ru",
-      "password": "231313123",
-      "name": "1231231",
-      "id": 3
-    },
-    {
-      "email": "denis-korablev18@rambler.ru",
-      "password": "sdadasdas",
-      "name": "dasdasd",
-      "id": 4
-    },
-    {
       "email": "wfm1@mail.ru",
-      "password": "13123123123",
-      "name": "1231231",
-      "id": 5
+      "password": "12345678",
+      "name": "313",
+      "id": 2
     }
   ],
   "bill": {
@@ -50,6 +32,26 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "name": "dadad",
+      "capacity": 1,
+      "id": 4
+    },
+    {
+      "name": "asdasdasd",
+      "capacity": 121,
+      "id": 5
+    },
+    {
+      "name": "sfsfs",
+      "capacity": 1,
+      "id": 6
+    },
+    {
+      "name": "f21141",
+      "capacity": 1,
+      "id": 7
     }
   ],
   "events": [

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../../shared/models/user.model';
-import { AuthService } from '../../../../shared/services/auth.service';
 import { Router } from '@angular/router';
+
+import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'wfm-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
 
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.user = JSON.parse(window.localStorage.getItem('user'));
