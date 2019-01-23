@@ -1,16 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Category } from '../../shared/models/category.model';
 import { CategoriesService } from '../../shared/services/categories.service';
 import { MessageModel } from 'src/app/shared/models/message.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'wfm-edit-category',
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.less']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit, OnDestroy {
 
+  sub: Subscription;
   @Input() categories: Category[] = [];
   @Output() onCategoryEdit = new EventEmitter<Category>();
   form: FormGroup;
@@ -39,11 +41,15 @@ export class EditCategoryComponent implements OnInit {
     if(capacity < 0) capacity *= -1;
 
     const category = new Category(name, capacity, +this.currentCategoryId )
-    this.categoriesService.updateCategory(category)
+    this.sub = this.categoriesService.updateCategory(category)
       .subscribe((category: Category) => {
           this.onCategoryEdit.emit(category);
           this.message.text = 'Категория успешно отредактирована';
           window.setTimeout(() => this.message.text = '', 5000);
       });
+    }
+
+    ngOnDestroy() {
+
     }
 }
