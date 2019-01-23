@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { CategoriesService } from '../../shared/services/categories.service';
@@ -9,7 +9,7 @@ import { Category } from '../../shared/models/category.model';
   templateUrl: './add-categorie.component.html',
   styleUrls: ['./add-categorie.component.less']
 })
-export class AddCategorieComponent {
+export class AddCategorieComponent implements OnInit {
 
   form: FormGroup;
   @Output() onCategoryAdd = new EventEmitter<Category>();

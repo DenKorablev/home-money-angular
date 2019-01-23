@@ -1,22 +1,76 @@
 <div class="card">
     <div class="card-header bordered">
         <div class="header-block">
-            <h3 class="title">Добавить категорию</h3>
+            <h3 class="title">Редактировать категорию</h3>
         </div>
     </div>
     <div class="card-block">
-        <form>
-            <div class="form-group has-error">
-                <label class="control-label" for="category-name">Введите название</label>
-                <input type="text" id="category-name" class="form-control">
-                <span class="form-help-text">Валидация ошибка</span>
+        <div 
+            class="alert alert-{{message.type}}"
+            *ngIf="message.text"
+        >{{message.text}}
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="control-label" for="select-category">Введите название</label>
+                <select 
+                    class="form-control"
+                    id="e-select-category"
+                    [(ngModel)]="currentCategoryId"
+                    (change)="onCategoryChange()"
+                    [ngModelOptions]="{standalone: true}"
+                >
+                    <option 
+                        *ngFor="let c of categories"
+                        [value]="c.id"
+                    >{{c.name}}</option>
+                </select>
             </div>
-            <div class="form-group has-success">
-                <label class="control-label" for="category-value">Введите лимит</label>
-                <input type="number" value="0" id="category-value" class="form-control">
-                <span class="form-help-text">Валидация нет ошибки</span>
+            <div 
+                class="form-group"
+                [ngClass]="{'has-error' : form.get('name').invalid && form.get('name').touched}"
+            >
+                <label class="control-label" for="e-category-name">Введите название</label>
+                <input 
+                type="text" 
+                id="e-category-name" 
+                class="form-control"
+                formControlName = 'name'
+                [ngModel]="currentCategory.name"
+                >
+                <span 
+                class="form-help-text"
+                *ngIf="form.get('name').invalid && form.get('name').touched"
+                >
+                Название категории не может быть пустым
+                </span>
             </div>
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            <div 
+                class="form-group"
+                [ngClass]="{'has-error' : form.get('capacity').invalid && form.get('capacity').touched}"
+            >
+                <label class="control-label" for="e-category-value">Введите лимит</label>
+                <input 
+                type="number" 
+                [ngModel]="currentCategory.capacity"
+                id="e-category-value" 
+                class="form-control"
+                formControlName = 'capacity'
+                min='1'
+                >
+                <span 
+                class="form-help-text"
+                *ngIf="form.get('capacity').invalid && form.get('capacity').touched"
+                >
+                    <span *ngIf="form.get('capacity')['errors']['required']">Поле не может быть пустым</span>
+                    <span *ngIf="form.get('capacity')['errors']['minlength']">Введите корректный email</span>
+                </span>
+            </div>
+            <button 
+                type="submit" 
+                class="btn btn-primary"
+                [disabled]='form.invalid'
+            >Редактировать</button>
         </form>
     </div>
 </div>

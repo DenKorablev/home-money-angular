@@ -34,24 +34,9 @@
       "capacity": 7000
     },
     {
-      "name": "dadad",
+      "name": "Новая",
       "capacity": 1,
       "id": 4
-    },
-    {
-      "name": "asdasdasd",
-      "capacity": 121,
-      "id": 5
-    },
-    {
-      "name": "sfsfs",
-      "capacity": 1,
-      "id": 6
-    },
-    {
-      "name": "f21141",
-      "capacity": 1,
-      "id": 7
     }
   ],
   "events": [
