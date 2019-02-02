@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../shared/services/categories.service';
+import { EventsService } from '../shared/services/events.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'wfm-history-page',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private categoriesService: CategoriesService,
+    private eventService: EventsService
+    ) { }
 
   ngOnInit() {
+    Observable.call(this.categoriesService.getCategories());
   }
 
 }
